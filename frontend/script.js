@@ -1,4 +1,4 @@
-const backendURL = "https://labelbox-as-a-web-app.onrender.com/";
+const backendURL = "https://labelbox-as-a-web-app.onrender.com";
 let images = [];
 let currentIndex = 0;
 
