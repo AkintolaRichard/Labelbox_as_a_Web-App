@@ -1,8 +1,14 @@
+from dotenv import load_dotenv
+import os
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pymongo import MongoClient
 from pydantic import BaseModel
 from bson import ObjectId
+
+load_dotenv()
+
+DB_URL = os.environ.get("DB_URL")
 
 # Initialize FastAPI app
 app = FastAPI()
@@ -17,7 +23,8 @@ app.add_middleware(
 )
 
 # Connect to MongoDB
-client = MongoClient("mongodb://localhost:27017")
+client = MongoClient(DB_URL)
+
 db = client.labelbox_db
 images_collection = db.images
 annotations_collection = db.annotations
